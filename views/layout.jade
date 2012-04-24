@@ -1,0 +1,34 @@
+doctype 5
+html
+  head
+    title= title
+
+    script(type='text/javascript'
+      data-main='javascripts/app/main.js'
+      src='http://requirejs.org/docs/release/1.0.7/comments/require.js') 
+
+    //-HOJAS DE ESTILO
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.min.css')
+    link(rel='stylesheet/less', href='/stylesheets/main.less')
+
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner        
+        a.btn.btn-navbar("data-toggle":"collapse", "data-target":".nav-collapse")
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        .container
+          a.brand Interactive
+          .nav-collapse
+            ul.nav
+              li
+                a(href='/') Inicio
+              li
+                a(href='/idea') La idea
+              li
+                a(href='/sobreNosotros') Sobre Nosotros
+                
+    block content
