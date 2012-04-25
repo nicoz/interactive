@@ -8,6 +8,8 @@ var express = require('express')
 
 var app = express();
 
+var backboneio = require('backbone.io');
+
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
@@ -25,6 +27,18 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 
-http.createServer(app).listen(3000);
-
+var server = http.createServer(app).listen(3000);
 console.log("Express server listening on port 3000");
+
+var backendUsuarios = backboneio.createBackend();
+backendUsuarios.use(backboneio.middleware.memoryStore());
+
+
+var backendNotas = backboneio.createBackend();
+backendNotas.use(backboneio.middleware.memoryStore());
+
+backboneio.listen(server, { usuarios: backendUsuarios, notas: backendNotas});
+
+
+
+
